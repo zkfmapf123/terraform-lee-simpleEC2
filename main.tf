@@ -12,7 +12,7 @@ resource "aws_instance" "instance" {
   associate_public_ip_address = lookup(var.instance_ip_attr, "is_public_ip")
   private_ip                  = lookup(var.instance_ip_attr, "is_private_ip") ? lookup(var.instance_ip_attr, "private_ip") : null
   subnet_id                   = var.instance_subnet_id
-  security_groups             = var.instance_sg_ids
+  vpc_security_group_ids      = var.instance_sg_ids
 
 
   ############################### hardware option ###############################

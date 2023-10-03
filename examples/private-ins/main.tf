@@ -41,7 +41,7 @@ module "default-private-ins" {
     is_public_ip  = false
     is_eip        = false
     is_private_ip = true
-    private_ip    = "10.1.1.100"
+    private_ip    = ""
   }
 
   #   instance_cpu_option = {
