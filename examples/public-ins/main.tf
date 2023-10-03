@@ -62,3 +62,7 @@ module "default-public-ins" {
     key_path          = "~/.ssh/id_rsa.pub"
   }
 }
+
+output "v" {
+  value = module.default-public-ins
+}
