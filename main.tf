@@ -24,7 +24,7 @@ resource "aws_instance" "instance" {
 
   ### cpu option
   dynamic "cpu_options" {
-    for_each = lookup(var.instance_cpu_option, "is_alloc_cpu_option") ? [1] : []
+    for_each = lookup(var.instance_cpu_option, "is_alloc_cpu_option") && !strcontains(var.instance_type, "micro") ? [1] : []
 
     content {
       core_count       = lookup(var.instance_cpu_option, "core_count")
