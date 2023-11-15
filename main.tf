@@ -35,9 +35,7 @@ resource "aws_instance" "instance" {
   ############################### ETC option ###############################
   key_name = lookup(var.instance_key_attr, "is_alloc_key_pair") ? lookup(var.instance_key_attr, "key_name") : lookup(var.instance_key_attr, "is_use_key_path") ? aws_key_pair.ins_keypair[0].key_name : null
 
-  iam_instance_profile {
-    name = var.instance_iam == "x" ? var.instance_iam : null
-  }
+  iam_instance_profile = var.instance_iam != "x" ? var.instance_iam : null
 
   tags = {
     Name     = var.instance_name
