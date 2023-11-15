@@ -106,3 +106,13 @@ variable "instance_key_attr" {
     error_message = "is_alloc_key_pair, is_use_key_path not allowed all true"
   }
 }
+
+##################################################################
+## ami
+##################################################################
+variable "instance_iam" {
+  description = "iam id"
+  type        = string
+
+  default = "x"
+}
