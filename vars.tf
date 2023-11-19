@@ -116,3 +116,15 @@ variable "instance_iam" {
 
   default = "x"
 }
+
+##################################################################
+## Tags
+##################################################################
+variable "instance_tags" {
+  description = "ec2 tags"
+  type        = map(any)
+
+  default = {
+    "MadeBy" : "terraform"
+  }
+}

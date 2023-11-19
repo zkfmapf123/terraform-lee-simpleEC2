@@ -37,10 +37,10 @@ resource "aws_instance" "instance" {
 
   iam_instance_profile = var.instance_iam != "x" ? var.instance_iam : null
 
-  tags = {
+  tags = merge({
     Name     = var.instance_name
     Resource = "ec2"
-  }
+  }, var.instance_tags)
 }
 
 ##################################################################

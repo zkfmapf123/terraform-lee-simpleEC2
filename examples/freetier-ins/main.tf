@@ -56,6 +56,11 @@ module "default-public-ins" {
     key_name          = ""
     key_path          = "~/.ssh/id_rsa.pub"
   }
+
+  instance_tags = {
+    "Monitoring" : true,
+    "MadeBy" : "terraform"
+  }
 }
 
 output "v" {
