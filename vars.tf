@@ -122,7 +122,7 @@ variable "instance_iam" {
 ##################################################################
 variable "user_data_file" {
   description = "file path + name"
-  type = string
+  type        = string
 
   default = ""
 }
@@ -138,4 +138,17 @@ variable "instance_tags" {
     "MadeBy" : "terraform"
   }
 }
+
+##################################################################
+## metadata_instance options
+##################################################################
+variable "is_enable_metadata_tag" {
+  description = "metadata tag 허용하는지?"
+  type        = bool
+
+  default = false
+}
+
+
+
 

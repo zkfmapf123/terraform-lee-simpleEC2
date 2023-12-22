@@ -2,9 +2,9 @@ provider "aws" {
   profile = "leedonggyu"
 }
 
-resource "aws_security_group" "ins-sg" {
+resource "aws_security_group" "userdata-temp-sg" {
   vpc_id      = "vpc-06151804b151e2c54"
-  name        = "inst-sg"
+  name        = "userdata-temp-sg"
   description = "description"
 
   ingress {
@@ -29,7 +29,7 @@ resource "aws_security_group" "ins-sg" {
   }
 
   tags = {
-    Name = "default-ins-sg"
+    Name = "userdata-temp-sg"
   }
 }
 
@@ -40,7 +40,7 @@ module "default-public-ins" {
   instance_name      = "freetier-ins"
   instance_region    = "ap-northeast-2a"
   instance_subnet_id = "subnet-0082ef1bd2a8cb458"
-  instance_sg_ids    = [aws_security_group.ins-sg.id]
+  instance_sg_ids    = [aws_security_group.userdata-temp-sg.id]
 
   instance_ami  = "ami-086cae3329a3f7d75" ## Linux amazon 2
   instance_type = "t2.micro"              ## t2.micro
@@ -69,7 +69,8 @@ module "default-public-ins" {
     "MadeBy" : "terraform"
   }
 
-  user_data_file = "./user_data.sh"
+  user_data_file         = "./user_data.sh"
+  is_enable_metadata_tag = true
 }
 
 output "v" {

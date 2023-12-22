@@ -41,10 +41,21 @@ resource "aws_instance" "instance" {
   ## USER_DATA
   user_data = var.user_data_file == "" ? null : file(var.user_data_file)
 
+  ## Tag
   tags = merge({
     Name     = var.instance_name
     Resource = "ec2"
   }, var.instance_tags)
+
+  ## LifeCycle 
+  lifecycle {
+    ignore_changes = [user_data]
+  }
+
+  ## Metadata Tag Options
+  metadata_options {
+    instance_metadata_tags = var.is_enable_metadata_tag ? "enabled" : "disabled"
+  }
 }
 
 ##################################################################
